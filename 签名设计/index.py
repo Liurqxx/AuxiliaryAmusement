@@ -41,7 +41,16 @@ def download():
 
         # print(imgUrl)
 
+        # 保存图片
+        with open('{}.gif'.format(name), 'wb') as file:
+            file.write(response)
 
+        # 显示图片
+        bm = PhotoImage(file='{}.gif'.format(name))
+
+        label2 = Label(root, image=bm)
+        label2.bm = bm
+        label2.grid(row=2, columnspan=2)
 
 
 # 创建窗口
