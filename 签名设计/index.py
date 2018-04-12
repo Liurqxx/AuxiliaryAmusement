@@ -25,6 +25,23 @@ def download():
             'fonts': 'jfcs.ttf',
             'fontcolor': '# 000000',
         }
+        # 获取网站源代码
+        result = requests.post(startUrl, data=data)
+        result.encoding = 'utf-8'
+        html = result.text
+        # print(html)
+        # 正则
+        reg = '<div class="tu">.*?<img src="(.*?)"/></div>'
+        # 图片路径
+        imagePath = re.findall(reg, html)
+        # 图片完整的路径
+        imgUrl = startUrl + imagePath[0]
+        # 获取图片信息
+        response = requests.get(imgUrl).content
+
+        # print(imgUrl)
+
+
 
 
 # 创建窗口
