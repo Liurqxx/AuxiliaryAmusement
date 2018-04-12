@@ -6,7 +6,25 @@ from tkinter import *
 from tkinter import messagebox
 
 
+# 模拟浏览器发送请求
+def download():
+    startUrl = 'http://www.uustv.com/'
+    # 接收用户输入的名字
+    name = entry.get()
 
+    # 对用户输入的名字进行处理
+    name = name.strip()
+
+    if name == '':
+        # 弹窗提示
+        messagebox.showinfo('提示：', '请输入用户名')
+    else:
+        data = {
+            'word': name,
+            'sizes': 60,
+            'fonts': 'jfcs.ttf',
+            'fontcolor': '# 000000',
+        }
 
 
 # 创建窗口
