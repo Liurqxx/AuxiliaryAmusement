@@ -20,6 +20,7 @@ def getFont(name):
     }
     return font_list_name[name]
 
+
 # 模拟浏览器发送请求
 def download():
     # 请求url地址
@@ -62,15 +63,17 @@ def download():
         response = requests.get(imgUrl).content
 
         # 保存图片
-        with open('{}.gif'.format(name), 'wb') as file:
+        with open('./img/{}.gif'.format(name + '-' + select_font), 'wb') as file:
             file.write(response)
 
         # 显示图片
-        bm = PhotoImage(file='{}.gif'.format(name))
+        bm = PhotoImage(file='./img/{}.gif'.format(name + '-' + select_font))
         # 把图片显示到窗口上
         label2 = Label(root, image=bm)
         label2.bm = bm
         label2.grid(row=2, columnspan=2)
+
+
 if __name__ == '__main__':
     # 创建窗口
     root = Tk()
