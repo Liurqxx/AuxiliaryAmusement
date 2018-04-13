@@ -114,3 +114,4 @@ if __name__ == '__main__':
 
     # 消息循环
     root.mainloop()
+    print('程序退出')
