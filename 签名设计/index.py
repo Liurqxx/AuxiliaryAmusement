@@ -39,7 +39,6 @@ def download():
         # 弹窗提示
         messagebox.showinfo('提示：', '请输入用户名!')
 
-
     else:
         data = {
             'word': name,
@@ -118,3 +117,8 @@ if __name__ == '__main__':
     # 消息循环
     root.mainloop()
     print('程序退出')
+
+
+
+
+
