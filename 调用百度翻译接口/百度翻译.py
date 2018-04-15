@@ -42,6 +42,7 @@ q=apple&from=en&to=zh&appid=2015063000000001&salt=1435660288&sign=f89f9594663708
 
 
 def main():
+	# 翻译功能选项
     select_num = int(input("请输入功能选项(1:英->中 2:中->英)："))
     if select_num == 1:
         # 英文转中文
