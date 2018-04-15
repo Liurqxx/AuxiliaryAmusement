@@ -28,6 +28,7 @@ def get_code_by_str(text):
 
 if __name__ == '__main__':
     info = input("请输入信息:")
+    # 生成自定义图片
     img_data = get_code_by_str(info)
     # 保存到本地图片中
     with open('info.png', 'wb') as file:
