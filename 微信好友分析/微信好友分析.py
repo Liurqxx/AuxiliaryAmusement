@@ -1,13 +1,27 @@
 # _*_coding:utf-8_*_
 # Author:liu
 from wxpy import *
-import requests
-import qrcode
-import io
+from pyecharts import Pie
+from pyecharts import Bar
 
 # 用于登录微信
 bot = Bot()
+# 男女比例展示
+def show_male(dict_data):
+    '''饼图展示男女比例'''
+    sex_key_list = []
+    sex_value_list = []
+    # 提取数据
+    for sex_key, sex_value in dict_data.items():
+        sex_key_list.append(sex_key)
+        sex_value_list.append(sex_value)
 
+    # 创建饼图 title_pos:标题位置
+    pie = Pie('男女比例', width=900)
+
+    # 添加数据 is_random:是否随机排列颜色，默认false
+    pie.add("", sex_key_list, sex_value_list, is_label_show=True)
+    pie.render('./img/男女比例.html')
 
 # 统计好友男女比例
 def tongji(friend_list):
