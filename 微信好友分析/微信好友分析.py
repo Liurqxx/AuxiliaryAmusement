@@ -23,18 +23,19 @@ def show_male(dict_data):
     pie.add("", sex_key_list, sex_value_list, is_label_show=True)
     pie.render('./img/男女比例.html')
 
-# 统计好友男女比例
-def tongji(friend_list):
-    '''男女比例'''
+def tongji_sex(friend_list):
+    '''饼图分析男女比例'''
     # 定义一个字典统计男女数量
-    sex_dict = {'male': 0, 'female': 0}
+    sex_dict = {'男': 0, '女': 0}
 
     for friend in friend_list:
         # 统计性别
         if friend.sex == 1:
-            sex_dict['male'] += 1
+            sex_dict['男'] += 1
         elif friend.sex == 2:
-            sex_dict['female'] += 1
+            sex_dict['女'] += 1
+    # 数据展示
+    show_male(sex_dict)
 
 
 def show_area_distribution(friends):
