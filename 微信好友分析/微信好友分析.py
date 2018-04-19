@@ -4,8 +4,13 @@ from wxpy import *
 from pyecharts import Pie
 from pyecharts import Bar
 
+'''
+    分析微信好友的数据
+'''
 # 用于登录微信
 bot = Bot()
+
+
 # 男女比例展示
 def show_male(dict_data):
     '''饼图展示男女比例'''
@@ -23,6 +28,8 @@ def show_male(dict_data):
     pie.add("", sex_key_list, sex_value_list, is_label_show=True)
     pie.render('./img/男女比例.html')
 
+
+# 统计好友男女比例
 def tongji_sex(friend_list):
     '''饼图分析男女比例'''
     # 定义一个字典统计男女数量
@@ -36,6 +43,8 @@ def tongji_sex(friend_list):
             sex_dict['女'] += 1
     # 数据展示
     show_male(sex_dict)
+
+
 # 柱状图显示地区分布
 def show_area(dict_data):
     area_key_list = []
@@ -52,6 +61,7 @@ def show_area(dict_data):
     bar.add('', area_key_list, area_value_list, is_stack=True, mark_line=['min', 'max'], mark_point=['average'])
     # 保存html文件
     bar.render(path='./img/地区分布.html')
+
 
 # 统计地区分布
 def tongji_area(friends):
@@ -72,6 +82,7 @@ def tongji_area(friends):
     # 柱状图展示地区分布
     show_area(province_dict)
 
+
 def main():
     # 好友列表
     my_friends_list = bot.friends()
@@ -80,8 +91,8 @@ def main():
     # my_group_list = bot.groups()
 
     # print(my_friends_list)
-    tongji(my_friends_list)
-    show_area_distribution(my_friends_list)
+    tongji_sex(my_friends_list)
+    tongji_area(my_friends_list)
 
 
 if __name__ == '__main__':
