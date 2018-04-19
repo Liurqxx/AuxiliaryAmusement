@@ -36,7 +36,22 @@ def tongji_sex(friend_list):
             sex_dict['女'] += 1
     # 数据展示
     show_male(sex_dict)
+# 柱状图显示地区分布
+def show_area(dict_data):
+    area_key_list = []
+    area_value_list = []
+    # 数据分类统计
+    for area_key, area_value in dict_data.items():
+        area_key_list.append(area_key)
+        area_value_list.append(area_value)
 
+    # 数据展示
+    # 制成图表(柱状图)
+    bar = Bar('地区分布')
+    # mark_line:显示最大值和最小值  mark_point:显示平均值
+    bar.add('', area_key_list, area_value_list, is_stack=True, mark_line=['min', 'max'], mark_point=['average'])
+    # 保存html文件
+    bar.render(path='./img/地区分布.html')
 
 def show_area_distribution(friends):
     # 使用一个字典统计各省好友数量
