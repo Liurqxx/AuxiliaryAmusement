@@ -18,20 +18,40 @@ import json
 
 
 def dilizuobiaoxi():
-    # 地理坐标系
-    data = [("海门", 9), ("鄂尔多斯", 12), ("招远", 12), ("舟山", 12), ("齐齐哈尔", 14), ("盐城", 15), ("赤峰", 16), ("青岛", 18),
-            ("乳山", 18), ("金昌", 19), ("泉州", 21), ("莱西", 21), ("日照", 21), ("胶南", 22), ("南通", 23), ("拉萨", 24),
-            ("云浮", 24), ("梅州", 25)]
-    geo = Geo("全国主要城市空气质量", "pm2.5", title_color="#fff", title_pos="center", width=1200, height=600,
-              background_color='#749f83')
-
+    # # 地理坐标系
+    # data = [("海门", 9), ("鄂尔多斯", 12), ("招远", 12), ("舟山", 12), ("齐齐哈尔", 14), ("盐城", 15), ("赤峰", 16), ("青岛", 18),
+    #         ("乳山", 18), ("金昌", 19), ("泉州", 21), ("莱西", 21), ("日照", 21), ("胶南", 22), ("南通", 23), ("拉萨", 24),
+    #         ("云浮", 24), ("梅州", 25)]
+    # geo = Geo("全国主要城市空气质量", "pm2.5", title_color="#fff", title_pos="center", width=1200, height=600,
+    #           background_color='#749f83')
+    #
+    # attr, value = geo.cast(data)
+    #
+    # geo.add(" ", attr, value, visual_range=[0, 200], visual_text_color="red", symbol_size=15, is_visualmap=True)
+    data = [
+        (u"山东", 9), (u"鄂尔多斯", 12), (u"招远", 12), (u"舟山", 12), (u"齐齐哈尔", 14), (u"盐城", 15),
+        (u"赤峰", 16), (u"青岛", 18), (u"乳山", 18), (u"金昌", 19), (u"泉州", 21), (u"莱西", 21),
+        (u"日照", 21), (u"胶南", 22), (u"南通", 23), (u"拉萨", 24), (u"云浮", 24), (u"梅州", 25)]
+    geo = Geo(u"全国主要城市空气质量", "data from pm2.5",
+              title_color="#fff", title_pos="center",
+              width=1200, height=600, background_color='#404a59')
     attr, value = geo.cast(data)
-    print(attr, value)
-
-    geo.add(" ", attr, value, visual_range=[0, 200], visual_text_color="red", symbol_size=15, is_visualmap=True)
-    # geo.show_config()
+    print(attr)
+    print(value)
+    geo.add("", attr, value, visual_range=[0, 200],
+            visual_text_color="#fff", symbol_size=15, is_visualmap=True)
 
     geo.render('./info/地理坐标系.html')
+
+
+def dilizuobiaoxi2():
+    data = [("海门", 9), ("鄂尔多斯", 12), ("招远", 12), ("舟山", 12), ("齐齐哈尔", 14), ("盐城", 15)]
+    geo = Geo("全国主要城市空气质量", "data from pm2.5", title_color="#fff", title_pos="center", width=1200, height=600,
+              background_color='#C2C2C2')
+    attr, value = geo.cast(data)
+    geo.add("", attr, value, type="effectScatter", is_random=True, effect_scale=5)
+
+    geo.render('./info/地理坐标系2.html')
 
 
 def guanxitu():
@@ -275,7 +295,8 @@ def jizuobiao_huitu2():
 
 
 if __name__ == '__main__':
-    # dilizuobiaoxi()
+    dilizuobiaoxi()
+    # dilizuobiaoxi2()
     # guanxitu()
     # map_demo()
     # shuiqiu1()
@@ -291,5 +312,5 @@ if __name__ == '__main__':
     # lianyitexiaosandiantu()
     # jizuobiao_duidiezhuzhuang()
     # jizuobiao_huitu()
-    dianyingbili()
+    # dianyingbili()
     # jizuobiao_huitu2()
