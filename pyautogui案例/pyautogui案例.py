@@ -2,32 +2,6 @@ import pyautogui
 import time
 
 
-#
-# print('Press Ctrl-C to quit')
-#
-# try:
-#     # while True:
-#     # ToDo: Get and print the mouse coordinates
-#     x, y = pyautogui.position()
-#     positionStr = 'X: ' + str(x) + ' Y: ' + str(y)
-#     time.sleep(5)
-#     # pyautogui.click(button='left') # 点击鼠标左键
-#     # pyautogui.doubleClick() #双击
-#     print(positionStr + '  check')
-#     pyautogui.click()
-#     distance = 200
-#     while distance > 0:
-#         pyautogui.dragRel(distance, 0, duration=0.2)  # move right
-#         distance = distance - 5
-#         pyautogui.dragRel(0, distance, duration=0.2)  # move down
-#         pyautogui.dragRel(-distance, 0, duration=0.2)  # move down
-#         distance = distance - 5
-#         pyautogui.dragRel(0, -distance, duration=0.2)  # move up
-#
-# except KeyboardInterrupt:
-#     print('end' + positionStr)
-#     # print('\nDone')
-
 def func2():
     '''绘制方块'''
     time.sleep(5)
@@ -211,3 +185,5 @@ def func():
 if __name__ == '__main__':
     # 绘制数字520
     func()
+    # 绘制方块
+    func2()
