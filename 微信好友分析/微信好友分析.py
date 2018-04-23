@@ -15,7 +15,7 @@ bot = Bot()
 
 # 男女比例展示
 def show_male(dict_data):
-    '''水球图展示男女比例'''
+    '''饼图展示男女比例'''
     sex_key_list = []
     sex_value_list = []
     # 提取数据
@@ -104,7 +104,9 @@ def tongji_qianming(friends):
 # 词云图显示签名
 def show_cloud(qianming_list, friend_name_list):
     '''词云图'''
+    # 创建词云图对象
     wordcloud = WordCloud(width=1600, height=1000)
+    # 添加数据
     wordcloud.add("", qianming_list, friend_name_list, word_size_range=[20, 100])
     wordcloud.render('./img/个签.html')
 
