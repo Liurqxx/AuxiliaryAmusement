@@ -95,7 +95,7 @@ def tongji_qianming(friends):
         if pattern != "":
             # 把签名添加到列表内
             qianming_list.append(pattern)
-
+            # 把名字添加到列表内
             friend_name_list.append(friend.name)
     # 个签显示
     show_cloud(qianming_list, friend_name_list)
@@ -106,7 +106,7 @@ def show_cloud(qianming_list, friend_name_list):
     '''词云图'''
     # 创建词云图对象
     wordcloud = WordCloud(width=1600, height=1000)
-    # 添加数据
+    # 添加数据，由于friend_name_list是字符窜类型，所以不显示。。。。
     wordcloud.add("", qianming_list, friend_name_list, word_size_range=[20, 100])
     wordcloud.render('./img/个签.html')
 
