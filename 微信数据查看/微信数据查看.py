@@ -36,41 +36,7 @@ def handle_receive_msg(msg):
 
 
 # 这个是用于监听是否有friend消息撤回
-@itchat.msg_register(NOTE, isFrientrooms(userName=groupid)
-    msg_Actual_from = msg['ActualNickName']
-    # msg_Actual_from = msg['User']
-    # msg_from = msg_Actual_from['Self']['NickName']
-    msg_from = msg_Actual_from
-    msg_time = msg['CreateTime']  # 信息发送的时间
-    msg_id = msg['MsgId']  # 每条信息的id
-    msg_content = None  # 储存信息的内容
-    msg_share_url = None  # 储存分享的链接，比如分享的文章和音乐
-    print(msg['Type'])
-
-    if msg['Type'] == 'Text' or msg['Type'] == 'Friends':  # 如果发送的消息是文本或者好友推荐
-        msg_content = msg['Text']
-        print(msg_content)
-
-    # 如果发送的消息是附件、视屏、图片、语音
-    elif msg['Type'] == "Attachment" or msg['Type'] == "Video" \
-            or msg['Type'] == 'Picture' \
-            or msg['Type'] == 'Recording':
-        msg_content = msg['FileName']  # 内容就是他们的文件名
-        msg['Text'](str(msg_content))  # 下载文件
-        # print msg_content
-    elif msg['Type'] == 'Card':  # 如果消息是推荐的名片
-        msg_content = msg['RecommendInfo']['NickName'] + '的名片'  # 内容就是推荐人的昵称和性别
-        if msg['RecommendInfo']['Sex'] == 1:
-            msg_content += '性别为男'
-        else:
-            msg_content += '性别为女'
-
-        print(msg_content)
-
-    elif msg['Type'] == 'Map':  # 如果消息为分享的位置信息
-        x, y, location = re.search(
-            "<location x=\"(.*?)\" y=\"(.*?)\".*label=\"(.*?)\".*", msg['OriContent']).group(1, 2, 3)
-        if location is None:
+@itchat.msg_register(NOTE, isFrien
             msg_content = r"纬度->" + x.__str__() + " 经度->" + y.__str__()  # 内容为详细的地址
         else:
             msg_content = r"" + location
