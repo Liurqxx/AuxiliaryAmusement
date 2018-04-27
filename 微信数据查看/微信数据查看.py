@@ -9,67 +9,6 @@ import time
 import re
 import os
 
-msg_information = {}
-face_bug = None  # 针对表情包的内容
-
-
-@itchat.msg_register([TEXT, PICTURE, FRIENDS, CARD, MAP, SHARING, RECORDING, ATTACHMENT, VIDEO], isFriendChat=True,
-                     isMpChat=True)
-def handle_receive_msg(msg):
-    global face_bug
-    msg_time_rec = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())  # 接受消息的时间
-    msg_from = itchat.search_friends(userName=msg['FromUserName'])['NickName']  # 在好友列表中查询发送信息的好友昵称
-    msg_time = msg['CreateTime']  # 信息发送的时间
-    msg_id = msg['MsgId']  # 每条信息的id
-    msg_content = None  # 储存信息的内容
-    msg_share_url = None  # 储存分享的链接，比如分享的文章和音乐
-    # print(msg['Type'])
-    # print(msg['MsgId'])
-
-    if msg['Type'] == 'Text' or msg['Type'] == 'Friends':  # 如果发送的消息是文本或者好友推荐
-        msg_content = msg['Text']
-        # print(msg_content)
-
-    # 如果发送的消息是附件、视屏、图片、语音
-    elif msg['Type'] == "Attachment" or msg['Type'] == "Video" \
-            or msg['Type'] == 'Picture' \
-            or msg['Type'] == 'Recording':
-        msg_content = msg['FileName']  # 内容就是他们的文件名
-        msg['Text'](str(msg_content))  # 下载文件
-        # print msg_content
-    elif msg['Type'] == 'Card':  # 如果消息是推荐的名片
-        msg_content = msg['RecommendInfo']['NickName'] + '的名片'  # 内容就是推荐人的昵称和性别
-        if msg['RecommendInfo']['Sex'] == 1:
-            msg_content += '性别为男'
-        else:
-            msg_content += '性别为女'
-
-        print(msg_content)
-
-    elif msg['Type'] == 'Map':  # 如果消息为分享的位置信息
-        x, y, location = re.search(
-            "<location x=\"(.*?)\" y=\"(.*?)\".*label=\"(.*?)\".*", msg['OriContent']).group(1, 2, 3)
-        if location is None:
-            msg_content = r"纬度->" + x.__str__() + " 经度->" + y.__str__()  # 内容为详细的地址
-        else:
-            msg_content = r"" + location
-    elif msg['Type'] == 'Sharing':  # 如果消息为分享的音乐或者文章，详细的内容为文章的标题或者是分享的名字
-        msg_content = msg['Text']
-        msg_share_url = msg['Url']  # 记录分享的url
-        print(msg_share_url)
-
-    face_bug = msg_content
-
-    # 将信息存储在字典中，每一个msg_id对应一条信息
-    msg_information.update(
-        {
-            msg_id: {
-                "msg_from": msg_from, "msg_time": msg_time, "msg_time_rec": msg_time_rec,
-                "msg_type": msg["Type"],
-                "msg_content": msg_content, "msg_share_url": msg_share_url
-            }
-        }
-    )
 
 
 # 这个是用于监听是否有friend消息撤回
