@@ -31,6 +31,18 @@ def main():
     # 检测文档是否提供txt转换，不提供就忽略
     if not doc.is_extractable:
         raise Exception
+    else:
+        # 创建PDF资源管理器
+        resource = PDFResourceManager()
+
+        # 创建一个PDF参数分析器
+        laparams = LAParams()
+
+        # 创建聚合器，用于读取文档的对象
+        device = PDFPageAggregator(resource, laparams=laparams)
+
+        # 创建解释器，对文档编码，解释成Python能够识别的格式
+        interpreter = PDFPageInterpreter(resource, device)
 
 if __name__ == '__main__':
     main()
