@@ -12,7 +12,7 @@ from pdfminer.converter import PDFPageAggregator
 
 
 def main():
-	    # 打开本地pdf文件
+    # 打开本地pdf文件
     file = open('./文档.pdf', 'rb')
 
     # 创建一个pdf文档分析器
@@ -31,6 +31,7 @@ def main():
     # 检测文档是否提供txt转换，不提供就忽略
     if not doc.is_extractable:
         raise Exception
+
     else:
         # 创建PDF资源管理器
         resource = PDFResourceManager()
@@ -43,6 +44,7 @@ def main():
 
         # 创建解释器，对文档编码，解释成Python能够识别的格式
         interpreter = PDFPageInterpreter(resource, device)
+
         # 循环遍历列表，每次处理一页的内容
         # doc.get_pages() 获取page列表
         for page in doc.get_pages():
@@ -58,6 +60,7 @@ def main():
                     # 保存到文件中
                     with open('./test.txt', 'a') as f:
                         f.write(out.get_text() + '\n')
+
 
 if __name__ == '__main__':
     main()
