@@ -43,6 +43,21 @@ def main():
 
         # 创建解释器，对文档编码，解释成Python能够识别的格式
         interpreter = PDFPageInterpreter(resource, device)
+        # 循环遍历列表，每次处理一页的内容
+        # doc.get_pages() 获取page列表
+        for page in doc.get_pages():
+            # 利用解释器的process_page()方法解析读取单独页数
+            interpreter.process_page(page)
+            # 使用聚合器get_result() 方法获取内容
+            layout = device.get_result()
+            # 这里layout是一个LTPage对象
+            for out in layout:
+                # 判断是否含有get_text()方法，获取文字
+                if hasattr(out, "get_text"):
+                    print(out.get_text())
+                    # 保存到文件中
+                    with open('./test.txt', 'a') as f:
+                        f.write(out.get_text() + '\n')
 
 if __name__ == '__main__':
     main()
