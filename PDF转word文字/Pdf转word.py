@@ -12,7 +12,25 @@ from pdfminer.converter import PDFPageAggregator
 
 
 def main():
-	pass
+	    # 打开本地pdf文件
+    file = open('./文档.pdf', 'rb')
+
+    # 创建一个pdf文档分析器
+    parser = PDFParser(file)
+
+    # 创建一个pdf文档
+    doc = PDFDocument()
+
+    # 链接分析器和文档对象
+    parser.set_document(doc)
+    doc.set_parser(parser)
+
+    # 初始化
+    doc.initialize('')
+
+    # 检测文档是否提供txt转换，不提供就忽略
+    if not doc.is_extractable:
+        raise Exception
 
 if __name__ == '__main__':
     main()
