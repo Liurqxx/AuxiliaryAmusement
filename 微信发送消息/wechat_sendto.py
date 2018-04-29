@@ -38,11 +38,12 @@ def main():
 
         # 定时发送，每86400秒(一天)发送一次
         #t = Timer(86400, main)
-        #t.start()
+        # t.start()
     except Exception as e:
         print(e)
         print('发送失败')
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    pass
