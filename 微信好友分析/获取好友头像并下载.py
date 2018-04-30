@@ -13,7 +13,26 @@ import sys
 
 
 def down_img(friends):
-    '''下载头像'''
+        '''下载头像'''
+    if not os._exists('./头像'):
+        shutil.rmtree('./头像')
+    os.mkdir('./头像')
+
+    # 首先下载大家的头像到本地
+    num = 0
+    for friend in friends:
+        # 遍历好友分组得到每个好友
+        # print(friend)
+        # friend.get_avatar() 获取好友头像
+        # print(friend.get_avatar())
+
+        # 获取好友头像并保存到本地
+        img = friend.get_avatar()
+        fileImage = open('./头像/' + str(num) + '.jpg', 'wb')
+        fileImage.write(img)
+        fileImage.close()
+        num += 1
+        print('正在下载第：' + str(num) + '位好友头像')
 
 
 def show_img():
