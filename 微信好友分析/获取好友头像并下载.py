@@ -69,16 +69,16 @@ def show_img():
 
 def main():
     # 登录微信
-    # bot = Bot(cache_path=True)
+    bot = Bot(cache_path=True)
 
     # 获取好友列表
-    # friends = bot.friends()
+    friends = bot.friends()
 
     # 下载好友头像
-    # down_img(friends)
+    down_img(friends)
 
     # 拼接好友头像
-    # show_img()
+    show_img()
 
 
 if __name__ == '__main__':
