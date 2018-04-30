@@ -36,7 +36,34 @@ def down_img(friends):
 
 
 def show_img():
-    '''借助plt的Image库进行头像拼接'''
+        '''借助plt的Image库进行头像拼接'''
+    ls = os.listdir('./头像')
+    # print(ls)
+    # 每一张的边长
+    each_size = int(math.sqrt(float(640 * 640) / len(ls)))
+    # print('每张边长：', each_size)
+    # 每张小头像的大小
+    lines = int(640 / each_size)
+    # 创建画布
+    image = Image.new('RGBA', (630, 630))
+    x = 0
+    y = 0
+    for i in range(0, len(ls) - 1):
+        try:
+            # if not i >= len(ls):
+            img = Image.open("./头像/" + str(ls[i]))
+            # else:
+            #     continue
+        except Exception as e:
+            print("Error", e)
+        else:
+            img = img.resize((each_size, each_size), Image.ANTIALIAS)
+            image.paste(img, (x * each_size, y * each_size))
+            x += 1
+            if x == lines:
+                x = 0
+                y += 1
+    image.save("头像拼接.jpg")
    
 
 
