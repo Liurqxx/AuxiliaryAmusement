@@ -33,6 +33,8 @@ def output(imgpath, width=100, height=100):
     return txt
 
 def save_as_txtfile(txt):
-
+    '''保存到文件'''
+    with open('imgtochar.txt', 'w') as f:
+        f.write(txt)
 if __name__ == '__main__':
     
