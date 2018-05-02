@@ -21,8 +21,9 @@ def print_menu():
     print("8.退出系统")
     print('==============================')
 
-
+#需要识别的图片资源
 img_score = 'img.png'
+# 需要识别的网络图片资源
 img_url = "http://img1.3lian.com/img013/v2/81/d/90.jpg"
 
 
