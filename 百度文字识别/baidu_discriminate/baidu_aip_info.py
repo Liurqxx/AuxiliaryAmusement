@@ -10,7 +10,7 @@ from aip import AipOcr
 class get_aipocr(object):
     def __init__(self):
         """ 你的 APPID AK SK """
-        #自己注册
+	'''自己注册 注册地址：https://login.bce.baidu.com/?account=&redirect=http%3A%2F%2Fconsole.bce.baidu.com%2F%3Ffromai%3D1#/aip/overview'''
         self.APP_ID = '******'
         self.API_KEY = '******'
         self.SECRET_KEY = '******'
