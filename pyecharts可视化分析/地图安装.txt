@@ -1,0 +1,16 @@
+python3安装：
+sudo pip3 install echarts-countries-pypkg 
+
+sudo pip3 install echarts-china-provinces-pypkg
+
+sudo pip3 install echarts-china-cities-pypkg
+
+sudo pip3 install echarts-countries-pypkg 
+
+sudo pip3 install echarts-china-provinces-pypkg
+
+sudo pip3 install echarts-china-cities-pypkg
+
+其中echarts-countries-pypkg 是全球国家地图
+echarts-china-provinces-pypkg是中国省级地图
+echarts-china-cities-pypkg是中国城市地图
