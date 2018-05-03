@@ -31,6 +31,7 @@ def down_img(friends):
         fileImage = open('./头像/' + str(num) + '.jpg', 'wb')
         fileImage.write(img)
         fileImage.close()
+	# 记录下载的数量
         num += 1
         print('正在下载第：' + str(num) + '位好友头像')
 
