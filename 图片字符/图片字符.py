@@ -2,7 +2,7 @@
 # Author:liu
 from PIL import Image
 
-imgpath = './img.jpeg'
+imgpath = './bg.jpg'
 
 # 变量ascii_char: 存储用于显示图片的字符种类。我们要注意到，这个list的最后一个元素是空格，
 # 这表示，我们 # 将使用空格来代替原图片中灰度值最高的像素点（在灰度图像中，灰度值最高为255，代表白色，最低为0，代表黑色）。
