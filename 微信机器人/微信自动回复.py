@@ -30,8 +30,8 @@ friends = bot.friends()
 # for friend in friends:
 #     friend_name_list.append(friend.name)
 
-# 调用图灵机器人API
-tuling = Tuling(api_key='fc1d06b9975546bab5c98d4f1b9a0b97')
+# 调用图灵机器人API   获取地址：http://www.tuling123.com/
+tuling = Tuling(api_key='×××××××××××××××××××××××××××')
 
 
 def handle_info(friend):
@@ -40,14 +40,7 @@ def handle_info(friend):
     # @bot.register([friend], msg_types=['TEXT', 'RECORDING', 'PICTURE'])
     @bot.register(friend)
     def reply_my_friend(msg):
-        # friend.name: 内容
-        # print(msg)
-        # print(msg.text)
-        # user_name = str(msg).split(':')[0]
-        # if len(bot.search(u'%s' % user_name)) > 0:
-        # print(user_name[0])
-        # print(type(user_name), user_name)
-        # print(msg.sender())
+    
         tuling.do_reply(msg)
 
     bot.join()
