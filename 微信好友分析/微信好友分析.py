@@ -117,10 +117,11 @@ def main():
 
     # 组列表
     # my_group_list = bot.groups()
-
+	#性别统计
     tongji_sex(my_friends_list)
+	#地区统计
     tongji_area(my_friends_list)
-
+	# 签名统计
     tongji_qianming(my_friends_list)
 
 
