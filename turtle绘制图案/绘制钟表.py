@@ -72,34 +72,6 @@ def Init():
     printer.penup()
 
 
-def SetupClock(radius):
-    # 建立表的外框
-    turtle.reset()
-    turtle.pensize(7)
-    for i in range(60):
-        Skip(radius)
-        if i % 5 == 0:
-            turtle.forward(20)
-            Skip(-radius - 20)
-
-            Skip(radius + 20)
-            if i == 0:
-                turtle.write(int(12), align="center", font=("Courier", 14, "bold"))
-            elif i == 30:
-                Skip(25)
-                turtle.write(int(i / 5), align="center", font=("Courier", 14, "bold"))
-                Skip(-25)
-            elif (i == 25 or i == 35):
-                Skip(20)
-                turtle.write(int(i / 5), align="center", font=("Courier", 14, "bold"))
-                Skip(-20)
-            else:
-                turtle.write(int(i / 5), align="center", font=("Courier", 14, "bold"))
-            Skip(-radius - 20)
-        else:
-            turtle.dot(5)
-            Skip(-radius)
-        turtle.right(6)
 
 
 def Week(t):
