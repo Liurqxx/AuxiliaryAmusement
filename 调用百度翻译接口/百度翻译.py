@@ -75,7 +75,6 @@ def main():
     # 得到结果
     result = json.loads(result.decode())['trans_result']
 
-    # {'from': 'en', 'trans_result': [{'src': 'apple', 'dst': '苹果'}], 'to': 'zh'}
     # 提取数据
     result = result[0]['dst']
     print('翻译结果：', result)
