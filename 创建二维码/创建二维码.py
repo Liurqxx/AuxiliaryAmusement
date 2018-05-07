@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import qrcode  # 导入模块
+# 用于生成二维码
+import qrcode
 import io
 
 
