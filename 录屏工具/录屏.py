@@ -2,6 +2,7 @@
 # Author:liu
 '''
     windows下录屏工具
+	仅限于Windows系统
 
 '''
 import threading, os, time, sys
