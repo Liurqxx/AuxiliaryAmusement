@@ -10,7 +10,7 @@ from pyecharts import WordCloud
     分析微信好友的数据
 '''
 # 用于登录微信
-bot = Bot()
+bot = Bot(cache_path=True)
 
 
 # 男女比例展示
