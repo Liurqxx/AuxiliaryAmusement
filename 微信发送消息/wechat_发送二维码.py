@@ -50,7 +50,7 @@ def get_code_by_str(text):
 def main():
     '''给指定好友发送指定信息的二维码'''
     # 用于登录微信
-    bot = Bot()
+    bot = Bot(cache_path=True)
 
     try:
         while True:
