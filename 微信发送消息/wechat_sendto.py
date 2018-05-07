@@ -6,7 +6,7 @@ from wechat_sender import Sender
 from threading import Timer
 
 # 用于登录微信
-bot = Bot()
+bot = Bot(cache_path=True)
 # 好友列表
 #friends_list = bot.friends()
 
