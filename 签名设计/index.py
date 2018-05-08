@@ -40,6 +40,7 @@ def download():
         messagebox.showinfo('提示：', '请输入用户名!')
 
     else:
+	# 请求数据
         data = {
             'word': name,
             'sizes': 60,
