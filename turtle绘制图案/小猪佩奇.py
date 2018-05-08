@@ -65,11 +65,9 @@ dot(r)
 
 
 
-(2)     画笔控制命令
+(2)     
 
-命令
-
-说明
+画笔控制命令
 
 turtle.fillcolor(colorstring)
 
