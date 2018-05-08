@@ -30,8 +30,10 @@ if __name__ == '__main__':
     # 颜色列表
     myColor = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple']
 
+
     # 循环绘制两百个矩形
     for num in range(0, 200):
+	# 绘制每个图形
         random_rectangle(350, 280, myColor[num % 7])
 
     tk.mainloop()
