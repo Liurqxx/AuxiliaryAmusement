@@ -5,7 +5,7 @@ import requests
 from wechat_sender import Sender
 from threading import Timer
 
-# 用于登录微信
+# 用于登录微信 cache_path:缓存,避免每次都登录
 bot = Bot(cache_path=True)
 # 好友列表
 #friends_list = bot.friends()
