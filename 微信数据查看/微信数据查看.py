@@ -9,6 +9,7 @@ import time
 import re
 import os
 
+
 msg_information = {}
 # 针对表情包的内容
 face_bug = None
@@ -289,7 +290,6 @@ def information(msg):
 
 
 if __name__ == '__main__':
-    # Main
     # itchat.auto_login(enableCmdQR=True, hotReload=True)
     itchat.auto_login()
     itchat.run()
