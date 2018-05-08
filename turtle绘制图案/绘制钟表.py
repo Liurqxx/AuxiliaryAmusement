@@ -6,7 +6,6 @@ import turtle
 from datetime import *
 
 '''
-    datetime模块：
         datetime模块用于是date和time模块的合集，datetime有两个常量，MAXYEAR和MINYEAR，分别是9999和1.
 
         datetime模块定义了5个类，分别是:
