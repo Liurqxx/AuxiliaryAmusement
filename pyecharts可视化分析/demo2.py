@@ -5,25 +5,6 @@
 from pyecharts import Map, Page, Style
 
 
-def create_charts():
-    page = Page()
-
-    style = Style(
-        width=1100, height=600
-    )
-
-    # value = [155, 10, 66, 78]
-    # attr = ["福建", "山东", "北京", "上海"]
-    # chart = Map("全国地图", **style.init_style)
-    # chart.add("", attr, value, maptype='china', is_label_show=True)
-    # page.add(chart)
-
-    value = [155, 10, 66, 78, 33, 80, 190, 53, 49.6]
-    attr = ["福建", "山东", "北京", "上海", "甘肃", "新疆", "河南", "广西", "西藏"]
-    chart = Map("全国地图-视觉通道", **style.init_style)
-    chart.add("", attr, value, maptype='china', is_visualmap=True,
-              visual_text_color='#000')
-    page.add(chart)
 
     # value = [20, 190, 253, 77, 65]
     # attr = ['汕头市', '汕尾市', '揭阳市', '阳江市', '肇庆市']
