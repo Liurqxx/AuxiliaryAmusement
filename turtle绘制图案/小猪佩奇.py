@@ -64,27 +64,6 @@ dot(r)
 绘制一个指定直径和颜色的圆点
 
 
-
-(2)     
-
-画笔控制命令
-
-turtle.fillcolor(colorstring)
-
-绘制图形的填充颜色
-
-turtle.color(color1, color2)
-
-同时设置pencolor=color1, fillcolor=color2
-
-turtle.filling()
-
-返回当前是否在填充状态
-
-turtle.begin_fill()
-
-准备开始填充图形
-
 turtle.end_fill()
 
 填充完成
