@@ -1,21 +1,5 @@
 # _*_coding:utf-8_*_
 # Author:liu
-from pyecharts import Geo
-from pyecharts import Graph
-from pyecharts import Map
-from pyecharts import Parallel
-from pyecharts import Liquid
-from pyecharts import Radar
-from pyecharts import Scatter
-from pyecharts import WordCloud
-from pyecharts import Gauge
-from pyecharts import Funnel
-from pyecharts import EffectScatter
-from pyecharts import Polar
-from pyecharts import Pie
-from pyecharts import Map
-import math
-import json
 
 
 def ditushili():
