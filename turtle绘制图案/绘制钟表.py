@@ -5,29 +5,6 @@
 import turtle
 from datetime import *
 
-'''
-        datetime模块用于是date和time模块的合集，datetime有两个常量，MAXYEAR和MINYEAR，分别是9999和1.
-
-        datetime模块定义了5个类，分别是:
-
-                1.datetime.date：表示日期的类
-
-                2.datetime.datetime：表示日期时间的类
-
-                3.datetime.time：表示时间的类
-
-                4.datetime.timedelta：表示时间间隔，即两个时间点的间隔
-
-                5.datetime.tzinfo：时区的相关信息
-'''
-
-
-# 抬起画笔，向前运动一段距离放下
-def Skip(step):
-    turtle.penup()
-    turtle.forward(step)
-    turtle.pendown()
-
 
 def mkHand(name, length):
     # 注册Turtle形状，建立表针Turtle
