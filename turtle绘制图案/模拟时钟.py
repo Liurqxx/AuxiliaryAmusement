@@ -1,36 +1,5 @@
 # _*_ coding:utf-8 _*_
 # Author:liu
-import sys
-import pygame
-import math
-import random
-from pygame.locals import *
-from datetime import datetime, date, time
-
-
-def print_text(font, x, y, text, color=(255, 255, 255)):
-    imgtext = font.render(text, True, color)
-    screen.blit(imgtext, (x, y))
-
-
-def wrap_angle(angle):
-    return abs(angle % 360)
-
-
-# main
-pygame.init()
-screen = pygame.display.set_mode((600, 500))
-pygame.display.set_caption("CLOCK")
-font = pygame.font.Font(None, 36)
-orange = 220, 180, 0
-white = 255, 255, 255
-yellow = 255, 255, 0
-pink = 255, 100, 100
-
-pos_x = 300
-pos_y = 250
-radius = 250
-angle = 360
 
 # repeating loop
 while True:
