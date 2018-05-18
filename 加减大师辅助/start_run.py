@@ -11,35 +11,40 @@ import time
 import re
 
 
+# 点击屏幕的参数
+config = {
+    '点击参数': {
+        'point': [
+            (80, 1450, 450, 1800),
+            (600, 1420, 1000, 1800),
+        ]
+    }
+}
 
-@time_it
-def vertical_cut(img):
-    """纵向切割"""
-    _, height = img.size
-    px = list(np.sum(np.array(img) == 0, axis=0))
-    # 列表保存像素累加值大于0的列
-    x0 = []
-    for x in range(len(px)):
-        if px[x] > 1:
-            x0.append(x)
 
-    # 找出边界
-    cut_list = [x0[0]]
-    for i in range(1, len(x0)):
-        if abs(x0[i] - x0[i - 1]) > 1:
-            cut_list.extend([x0[i - 1], x0[i]])
-    cut_list.append(x0[-1])
+def time_it(func):
+    def wrap(*args, **kwargs):
+        # 返回系统运行时间
+        # time_flag = time.perf_counter()
+        result = func(*args)
+        # print(func.__name__ + ': %.5fs' % (time.perf_counter() - time_flag))
+        return result
 
-    cut_imgs = []
-    # 切割顺利的话应该是整对
-    if len(cut_list) % 2 == 0:
-        for i in range(len(cut_list) // 2):
-            cut_img = img.crop([cut_list[i * 2], 0, cut_list[i * 2 + 1], height])
-            cut_imgs.append(cut_img)
-        return cut_imgs
-    else:
-        print('Vertical cut failed.')
-        return
+    return wrap
+
+
+def binarize(img, threshold=200):
+    """二值化"""
+    img = img.convert('L')
+    table = []
+    for i in range(256):
+        if i > threshold:
+            table.append(0)
+        else:
+            table.append(1)
+    bin_img = img.point(table, '1')
+    return bin_img
+
 
 
 @time_it
