@@ -65,23 +65,6 @@ def horizontal_cut(img):
             cut_list.extend([y0[i - 1], y0[i]])
     cut_list.append(y0[-1])
 
-    # 切割顺利的话应该是长度为4的list
-    if len(cut_list) == 4:
-        cut_img1 = img.crop([0, cut_list[0], width, cut_list[1]])
-        cut_img2 = img.crop([0, cut_list[2], width, cut_list[3]])
-        return [cut_img1, cut_img2]
-    else:
-        print('Horizontal cut failed.')
-        return
-
-
-def hashing(img):
-    """计算哈希值"""
-    img = img.resize((20, 30), Image.LANCZOS).convert("L")
-    px = np.array(img).flatten()
-    hash_val = (px > px.mean()).astype(int)
-    hash_val = ''.join(str(e) for e in hash_val)
-    return hash_val
 
 
 def hamming(hash1, hash2):
