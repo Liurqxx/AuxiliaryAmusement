@@ -93,25 +93,6 @@ def recognize(img):
 
 
 
-# 获取手机截图
-def get_screenshot():
-    # 执行该命令获取手机的图片
-    process = subprocess.Popen("adb shell screencap -p", shell=True, stdout=subprocess.PIPE)
-    screenshot = process.stdout.read()
-    # 格式化
-    screenshot = screenshot.replace(b"\r\r\n", b"\n")
-    # 将图片信息保存到图片中
-    # with open('test.png', 'wb') as f:
-    #     f.write(screenshot)
-    # time.sleep(0.2)
-
-    # 将图片信息写入到内存中
-    img_fb = BytesIO()
-    img_fb.write(screenshot)
-    # # 处理图片
-    img = Image.open(img_fb)
-    return img
-
 
 # 判断结果
 def is_show(text_info):
