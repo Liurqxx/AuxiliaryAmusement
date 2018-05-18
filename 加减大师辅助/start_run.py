@@ -115,25 +115,3 @@ def is_show(text_info):
 
 
 
-
-if __name__ == '__main__':
-    while True:
-        input('输入回车进行操作:')
-        # 获取手机屏幕截图
-        scr = get_screenshot()
-        # print(type(scr))
-        scr = scr.crop([0, 750, 1080, 1150])
-
-        # # print(scr)
-        # # 获取图片内文字 (9-5=6)
-        result = recognize(scr)
-        # print(result)
-        print(recognize(scr))
-        is_show_result = is_show(result)
-        print(is_show_result)
-        if is_show_result:
-            # 结果正确
-            click(config['点击参数']['point'][0])
-        else:
-            # 结果错误
-            click(config['点击参数']['point'][1])
