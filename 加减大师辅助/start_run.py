@@ -90,25 +90,7 @@ def recognize(img):
     with open('HashFiles/hash.json', 'r') as fp:
         hash_vals = json.load(fp)
 
-    # 相近度列表
-    nearness1 = {}
-    expr = ''
-    for char in chars1:
-        hash_val = hashing(char)
-        for h in hash_vals:
-            nearness1[h] = hamming(hash_val, hash_vals[h])
-        expr += sorted(nearness1.items(), key=lambda d: d[1])[0][0]
 
-    nearness2 = {}
-    for char in chars2:
-        hash_val = hashing(char)
-        for h in hash_vals:
-            nearness2[h] = hamming(hash_val, hash_vals[h])
-        expr += sorted(nearness2.items(), key=lambda d: d[1])[0][0]
-
-    expr = expr.replace('subtract', '-').replace('plus', '+').replace('equal', '=')
-    # print(len(expr))
-    return expr
 
 
 # 获取手机截图
