@@ -114,17 +114,6 @@ def is_show(text_info):
         return False
 
 
-# 点击屏幕
-def click(point):
-    """点击屏幕"""
-    cmd = "adb shell input swipe %s %s %s %s %s" % (
-        point[0],
-        point[1],
-        point[0] + random.randint(0, 3),
-        point[1] + random.randint(0, 3),
-        100
-    )
-    os.system(cmd)
 
 
 if __name__ == '__main__':
