@@ -2,27 +2,6 @@
 # Author:liu
 
 from turtle import *
-from time import sleep
-
-
-def go_to(x, y):
-    up()
-    goto(x, y)
-    down()
-
-
-def big_Circle(size):
-    speed(10)
-    for i in range(150):
-        forward(size)
-        right(0.3)
-
-
-def small_Circle(size):
-    speed(10)
-    for i in range(210):
-        forward(size)
-        right(0.786)
 
 
 def line(size):
