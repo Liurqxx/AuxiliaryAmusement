@@ -224,48 +224,7 @@ def get_screenshot():
     return img
 
 
-# 判断结果
-def is_show(text_info):
-    # (9 - 5 = -6)
-    # 获取加减符号
-    result_fuhao = re.findall('([-,+])', text_info)
 
-    # 获取 - + 的索引值
-    index1 = text_info.find(result_fuhao[0])
-
-    # 获取 = 的索引值
-    index2 = text_info.find('=')
-
-    # 由于不确定数字是几位数,所以使用切片获取三部分
-    num1 = text_info[:index1]  # 第一个数字
-    num1 = num1.strip()
-    num2 = text_info[index1 + 1:index2]  # 第二个数字
-    num2 = num2.strip()
-    num3 = text_info[index2 + 1:]  # 最后的结果
-    num3 = num3.strip()
-
-    # print(num1, num2, result)
-    if result_fuhao[0] == '-':
-        if int(num1) - int(num2) == int(num3):
-            return True
-        return False
-    else:
-        if int(num1) + int(num2) == int(num3):
-            return True
-        return False
-
-
-# 点击屏幕
-def click(point):
-    """点击屏幕"""
-    cmd = "adb shell input swipe %s %s %s %s %s" % (
-        point[0],
-        point[1],
-        point[0] + random.randint(0, 3),
-        point[1] + random.randint(0, 3),
-        100
-    )
-    os.system(cmd)
 
 
 if __name__ == '__main__':
