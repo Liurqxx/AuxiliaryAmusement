@@ -160,62 +160,6 @@ def hashing(img):
     return hash_val
 
 
-# 计算汉明距离
-def hamming(hash1, hash2):
-    """计算汉明距离"""
-    if len(hash1) != len(hash2):
-        # print('hash1: ', hash1)
-        # print('hash2: ', hash2)
-        raise ValueError("Undefined for sequences of unequal length")
-
-    return sum(i != j for i, j in zip(hash1, hash2))
-
-
-# 文字提取
-def recognize(img):
-    """输入：经过裁剪的含有等式的区域图像"""
-    img = img.convert('L')
-    img = binarize(img)
-
-    h_cut_imgs = horizontal_cut(img)
-    chars1 = vertical_cut(h_cut_imgs[0])
-    chars2 = vertical_cut(h_cut_imgs[1])
-
-    with open('HashFiles/hash.json', 'r') as fp:
-        hash_vals = json.load(fp)
-
-    # 相近度列表
-    nearness1 = {}
-    expr = ''
-    for char in chars1:
-        hash_val = hashing(char)
-        for h in hash_vals:
-            nearness1[h] = hamming(hash_val, hash_vals[h])
-        expr += sorted(nearness1.items(), key=lambda d: d[1])[0][0]
-
-    nearness2 = {}
-    for char in chars2:
-        hash_val = hashing(char)
-        for h in hash_vals:
-            nearness2[h] = hamming(hash_val, hash_vals[h])
-        expr += sorted(nearness2.items(), key=lambda d: d[1])[0][0]
-
-    expr = expr.replace('subtract', '-').replace('plus', '+').replace('equal', '=')
-    # print(len(expr))
-    return expr
-
-
-# 获取手机截图
-def get_screenshot():
-    # 执行该命令获取手机的图片
-    process = subprocess.Popen("adb shell screencap -p", shell=True, stdout=subprocess.PIPE)
-    screenshot = process.stdout.read()
-    # 格式化
-    screenshot = screenshot.replace(b"\r\r\n", b"\n")
-    # 将图片信息保存到图片中,此处用于测试
-    # with open('test.png', 'wb') as f:
-    #     f.write(screenshot)
-    # 创建内存对象
     img_fb = BytesIO()
     # 将图片信息写入到内存中
     img_fb.write(screenshot)
@@ -224,7 +168,48 @@ def get_screenshot():
     return img
 
 
+# 判断结果
+def is_show(text_info):
+    # (9 - 5 = -6)
+    # 获取加减符号
+    result_fuhao = re.findall('([-,+])', text_info)
 
+    # 获取 - + 的索引值
+    index1 = text_info.find(result_fuhao[0])
+
+    # 获取 = 的索引值
+    index2 = text_info.find('=')
+
+    # 由于不确定数字是几位数,所以使用切片获取三部分
+    num1 = text_info[:index1]  # 第一个数字
+    num1 = num1.strip()
+    num2 = text_info[index1 + 1:index2]  # 第二个数字
+    num2 = num2.strip()
+    num3 = text_info[index2 + 1:]  # 最后的结果
+    num3 = num3.strip()
+
+    # print(num1, num2, result)
+    if result_fuhao[0] == '-':
+        if int(num1) - int(num2) == int(num3):
+            return True
+        return False
+    else:
+        if int(num1) + int(num2) == int(num3):
+            return True
+        return False
+
+
+# 点击屏幕
+def click(point):
+    """点击屏幕"""
+    cmd = "adb shell input swipe %s %s %s %s %s" % (
+        point[0],
+        point[1],
+        point[0] + random.randint(0, 3),
+        point[1] + random.randint(0, 3),
+        100
+    )
+    os.system(cmd)
 
 
 if __name__ == '__main__':
