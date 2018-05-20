@@ -10,22 +10,6 @@ import json
 import time
 import re
 
-'''
-    需要安装的库:
-        1:PIL 安装方式:https://blog.csdn.net/xiamoyanyulrq/article/details/80375449
-        2:numpy  安装方式:https://blog.csdn.net/xiamoyanyulrq/article/details/80375544
-    基本操作:
-        1:手机打开usb调试模式连接电脑,电脑需安装adb驱动,同时连接电脑
-        2:手机端运行游戏
-        3:运行该程序,按下回车即可开始
-    基本思路:
-        1:执行adb shell命令获取屏幕截图
-        2:对截图进行二值化,并且进行纵向和横向切割,得到包含关键数据的图片
-        3:对初次处理后的图片进行文字提取
-        4:计算图片中的公式是否正确,得到答案
-        5:程序根据结果自动点击对应的按钮
-
-'''
 
 # 点击屏幕的参数,根据手机分辨率调整
 config = {
@@ -52,6 +36,35 @@ def binarize(img, threshold=200):
     bin_img = img.point(table, '1')
     return bin_img
 
+
+# 图片纵向切割
+def vertical_cut(img):
+    """纵向切割"""
+    _, height = img.size
+    px = list(np.sum(np.array(img) == 0, axis=0))
+    # 列表保存像素累加值大于0的列
+    x0 = []
+    for x in range(len(px)):
+        if px[x] > 1:
+            x0.append(x)
+
+    # 找出边界
+    cut_list = [x0[0]]
+    for i in range(1, len(x0)):
+        if abs(x0[i] - x0[i - 1]) > 1:
+            cut_list.extend([x0[i - 1], x0[i]])
+    cut_list.append(x0[-1])
+
+    cut_imgs = []
+    # 切割顺利的话应该是整对
+    if len(cut_list) % 2 == 0:
+        for i in range(len(cut_list) // 2):
+            cut_img = img.crop([cut_list[i * 2], 0, cut_list[i * 2 + 1], height])
+            cut_imgs.append(cut_img)
+        return cut_imgs
+    else:
+        print('Vertical cut failed.')
+        return
 
 
 # 图片横向切割
