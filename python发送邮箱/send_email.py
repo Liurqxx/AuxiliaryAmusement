@@ -38,3 +38,26 @@ with open(u'./img.png', 'rb') as f:
 # 登录并发送邮件
 try:
     # QQsmtp服务器的端口号为4
+
+
+   mime.set_payload(f.read())
+    # 用Base64编码:
+    encoders.encode_base64(mime)
+    # 添加到MIMEMultipart:
+    msg.attach(mime)
+
+# 登录并发送邮件
+try:
+    # QQsmtp服务器的端口号为465或587
+    s = smtplib.SMTP_SSL("smtp.qq.com", 465)
+    s.set_debuglevel(1)
+    s.login(sender, passWord)
+    # 给receivers列表中的联系人逐个发送邮件
+    for item in receivers:
+        msg['To'] = to = item
+        s.sendmail(sender, to, msg.as_string())
+        print('Success!')
+    s.quit()
+    print("All emails have been sent over!")
+except smtplib.SMTPException as e:
+    print("Falied,%s", e)
