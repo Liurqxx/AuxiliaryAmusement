@@ -45,3 +45,18 @@ class SearchWeather():
 
 if __name__ == "__main__":
     weather = SearchWeather()
+            if temphigh == '':
+                weather += '你好，【%s】今天白天：【%s】，温度：【%s】，%s：【%s】\n' % (cityname, title, templow, wind, direction)
+            else:
+                weather += (date + title + "【" + templow + "~" + temphigh + '°C】' + wind + direction + "\n")
+        return weather
+
+    def main(self, city):
+        cityCode = self.getcityCode(city)
+        detail = self.getWeather(cityCode, city)
+        print(detail)
+
+
+if __name__ == "__main__":
+    weather = SearchWeather()
+    weather.main(city=input('请输入城市名称：'))
